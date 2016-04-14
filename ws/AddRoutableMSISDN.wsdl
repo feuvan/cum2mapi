@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:jws="http://api.jasperwireless.com/ws/schema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             targetNamespace="http://api.jasperwireless.com/ws/schema">
+
+    <types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://api.jasperwireless.com/ws/schema"
+                   elementFormDefault="qualified" attributeFormDefault="unqualified"
+                   xsi:schemaLocation="http://www.w3.org/2001/XMLSchema http://www.w3.org/2001/XMLSchema.xsd">
+            <xs:import namespace="http://api.jasperwireless.com/ws/schema"
+                       schemaLocation="JasperAPI.xsd"/>
+        </xs:schema>
+    </types>
+
+    <message name="AddRoutableMSISDNRequest">
+        <part name="body" element="jws:AddRoutableMSISDNRequest"/>
+    </message>
+
+    <message name="AddRoutableMSISDNResponse">
+        <part name="body" element="jws:AddRoutableMSISDNResponse"/>
+    </message>
+
+    <portType name="AddRoutableMSISDNPortType">
+        <operation name="AddRoutableMSISDN">
+            <input message="jws:AddRoutableMSISDNRequest" />
+            <output message="jws:AddRoutableMSISDNResponse" />
+        </operation>
+    </portType>
+
+    <binding name="AddRoutableMSISDNBinding" type="jws:AddRoutableMSISDNPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="AddRoutableMSISDN">
+            <!-- static logic string used to match Endpoint -->
+            <soap:operation soapAction="http://api.jasperwireless.com/ws/service/AddRoutableMSISDN"/>
+            <input name="AddRoutableMSISDNRequest">
+                <soap:body use="literal" namespace="http://api.jasperwireless.com/ws/schema"/>
+            </input>
+            <output name="AddRoutableMSISDNResponse">
+                <soap:body use="literal" namespace="http://api.jasperwireless.com/ws/schema"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="AddRoutableMSISDNService">
+        <port binding="jws:AddRoutableMSISDNBinding" name="AddRoutableMSISDNPort">
+            <soap:address location="https://apitest.jasperwireless.com/ws/service/AddRoutableMSISDN"/>
+        </port>
+    </service>
+
+</definitions>

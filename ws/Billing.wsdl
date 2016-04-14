@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:jws="http://api.jasperwireless.com/ws/schema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             targetNamespace="http://api.jasperwireless.com/ws/schema">
+    <types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://api.jasperwireless.com/ws/schema" 
+           elementFormDefault="qualified" attributeFormDefault="unqualified"
+           xsi:schemaLocation="http://www.w3.org/2001/XMLSchema http://www.w3.org/2001/XMLSchema.xsd">
+            <xs:import namespace="http://api.jasperwireless.com/ws/schema"
+                       schemaLocation="JasperAPI.xsd"/>
+        </xs:schema>
+    </types>
+
+    <message name="GetTerminalUsageRequest">
+        <part name="body" element="jws:GetTerminalUsageRequest"/>
+    </message>
+
+    <message name="GetTerminalUsageResponse">
+        <part name="body" element="jws:GetTerminalUsageResponse"/>
+    </message>
+
+    <message name="GetInvoiceRequest">
+        <part name="body" element="jws:GetInvoiceRequest"/>
+    </message>
+
+    <message name="GetInvoiceResponse">
+        <part name="body" element="jws:GetInvoiceResponse"/>
+    </message>
+
+    <message name="GetTerminalUsageDataDetailsRequest">
+        <part name="body" element="jws:GetTerminalUsageDataDetailsRequest"/>
+    </message>
+
+    <message name="GetTerminalUsageDataDetailsResponse">
+        <part name="body" element="jws:GetTerminalUsageDataDetailsResponse"/>
+    </message>
+
+    <message name="GetTerminalUsageSmsDetailsRequest">
+        <part name="body" element="jws:GetTerminalUsageSmsDetailsRequest"/>
+    </message>
+
+    <message name="GetTerminalUsageSmsDetailsResponse">
+        <part name="body" element="jws:GetTerminalUsageSmsDetailsResponse"/>
+    </message>
+    <message name="GetTerminalUsageVoiceDetailsRequest">
+         <part name="body" element="jws:GetTerminalUsageVoiceDetailsRequest"/>
+     </message>
+
+     <message name="GetTerminalUsageVoiceDetailsResponse">
+         <part name="body" element="jws:GetTerminalUsageVoiceDetailsResponse"/>
+     </message>
+
+    <portType name="BillingPortType">
+        <operation name="GetTerminalUsage">
+            <input message="jws:GetTerminalUsageRequest" />
+            <output message="jws:GetTerminalUsageResponse" />
+        </operation>
+        <operation name="GetInvoice">
+            <input message="jws:GetInvoiceRequest" />
+            <output message="jws:GetInvoiceResponse" />
+        </operation>
+        <operation name="GetTerminalUsageDataDetails">
+            <input message="jws:GetTerminalUsageDataDetailsRequest" />
+            <output message="jws:GetTerminalUsageDataDetailsResponse" />
+        </operation>
+        <operation name="GetTerminalUsageSmsDetails">
+            <input message="jws:GetTerminalUsageSmsDetailsRequest" />
+            <output message="jws:GetTerminalUsageSmsDetailsResponse" />
+        </operation>
+        <operation name="GetTerminalUsageVoiceDetails">
+            <input message="jws:GetTerminalUsageVoiceDetailsRequest" />
+            <output message="jws:GetTerminalUsageVoiceDetailsResponse" />
+        </operation>
+    </portType>
+
+    <binding name="BillingBinding" type="jws:BillingPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="GetTerminalUsage">
+            <!-- static logic string used to match Endpoint -->
+            <soap:operation soapAction="http://api.jasperwireless.com/ws/service/billing/GetTerminalUsage"/>
+            <input name="GetTerminalUsageRequest">
+                <soap:body use="literal" namespace="http://api.jasperwireless.com/ws/schema"/>
+            </input>
+            <output name="GetTerminalUsageResponse">
+                <soap:body use="literal" namespace="http://api.jasperwireless.com/ws/schema"/>
+            </output>
+        </operation>
+        <operation name="GetInvoice">
+            <!-- static logic string used to match Endpoint -->
+            <soap:operation soapAction="http://api.jasperwireless.com/ws/service/billing/GetInvoice"/>
+            <input name="GetInvoiceRequest">
+                <soap:body use="literal" namespace="http://api.jasperwireless.com/ws/schema"/>
+            </input>
+            <output name="GetInvoiceResponse">
+                <soap:body use="literal" namespace="http://api.jasperwireless.com/ws/schema"/>
+            </output>
+        </operation>
+        <operation name="GetTerminalUsageDataDetails">
+            <!-- static logic string used to match Endpoint -->
+            <soap:operation soapAction="http://api.jasperwireless.com/ws/service/billing/GetTerminalUsageDataDetails"/>
+            <input name="GetTerminalUsageDataDetailsRequest">
+                <soap:body use="literal" namespace="http://api.jasperwireless.com/ws/schema"/>
+            </input>
+            <output name="GetTerminalUsageDataDetailsResponse">
+                <soap:body use="literal" namespace="http://api.jasperwireless.com/ws/schema"/>
+            </output>
+        </operation>
+        <operation name="GetTerminalUsageSmsDetails">
+            <!-- static logic string used to match Endpoint -->
+            <soap:operation soapAction="http://api.jasperwireless.com/ws/service/billing/GetTerminalUsageSmsDetails"/>
+            <input name="GetTerminalUsageSmsDetailsRequest">
+                <soap:body use="literal" namespace="http://api.jasperwireless.com/ws/schema"/>
+            </input>
+            <output name="GetTerminalUsageSmsDetailsResponse">
+                <soap:body use="literal" namespace="http://api.jasperwireless.com/ws/schema"/>
+            </output>
+        </operation>
+        <operation name="GetTerminalUsageVoiceDetails">
+            <!-- static logic string used to match Endpoint -->
+            <soap:operation soapAction="http://api.jasperwireless.com/ws/service/billing/GetTerminalUsageVoiceDetails"/>
+            <input name="GetTerminalUsageVoiceDetailsRequest">
+                <soap:body use="literal" namespace="http://api.jasperwireless.com/ws/schema"/>
+            </input>
+            <output name="GetTerminalUsageVoiceDetailsResponse">
+                <soap:body use="literal" namespace="http://api.jasperwireless.com/ws/schema"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="BillingService">
+        <port binding="jws:BillingBinding" name="BillingPort">
+            <soap:address location="https://api.10646.cn/ws/service/billing"/>
+        </port>
+    </service>
+</definitions>
+

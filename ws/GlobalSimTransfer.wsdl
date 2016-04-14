@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:jws="http://api.jasperwireless.com/ws/schema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             targetNamespace="http://api.jasperwireless.com/ws/schema">
+    <types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://api.jasperwireless.com/ws/schema"
+           elementFormDefault="qualified" attributeFormDefault="unqualified"
+           xsi:schemaLocation="http://www.w3.org/2001/XMLSchema http://www.w3.org/2001/XMLSchema.xsd">
+            <xs:import namespace="http://api.jasperwireless.com/ws/schema"
+                       schemaLocation="JasperAPI.xsd"/>
+        </xs:schema>
+    </types>
+
+    <message name="TransferGlobalSimRequest">
+        <part name="body" element="jws:TransferGlobalSimRequest"/>
+    </message>
+
+    <message name="TransferGlobalSimResponse">
+        <part name="body" element="jws:TransferGlobalSimResponse"/>
+    </message>
+
+    <message name="GetGlobalSimTransferStatusRequest">
+        <part name="body" element="jws:GetGlobalSimTransferStatusRequest"/>
+    </message>
+
+    <message name="GetGlobalSimTransferStatusResponse">
+        <part name="body" element="jws:GetGlobalSimTransferStatusResponse"/>
+    </message>
+
+    <message name="CancelGlobalSimTransferRequest">
+        <part name="body" element="jws:CancelGlobalSimTransferRequest"/>
+    </message>
+
+    <message name="CancelGlobalSimTransferResponse">
+        <part name="body" element="jws:CancelGlobalSimTransferResponse"/>
+    </message>
+
+    <portType name="GlobalSimTransferPortType">
+        <operation name="TransferGlobalSim">
+            <input message="jws:TransferGlobalSimRequest" />
+            <output message="jws:TransferGlobalSimResponse" />
+        </operation>
+        <operation name="GetGlobalSimTransferStatus">
+            <input message="jws:GetGlobalSimTransferStatusRequest" />
+            <output message="jws:GetGlobalSimTransferStatusResponse" />
+        </operation>
+        <operation name="CancelGlobalSimTransfer">
+            <input message="jws:CancelGlobalSimTransferRequest" />
+            <output message="jws:CancelGlobalSimTransferResponse" />
+        </operation>
+    </portType>
+
+    <binding name="GlobalSimTransferBinding" type="jws:GlobalSimTransferPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="TransferGlobalSim">
+            <soap:operation soapAction="http://api.jasperwireless.com/ws/service/globalsimtransfer/TransferGlobalSim"/>
+            <input name="TransferGlobalSimRequest">
+                <soap:body use="literal" namespace="http://api.jasperwireless.com/ws/schema"/>
+            </input>
+            <output name="TransferGlobalSimResponse">
+                <soap:body use="literal" namespace="http://api.jasperwireless.com/ws/schema"/>
+            </output>
+        </operation>
+        <operation name="GetGlobalSimTransferStatus">
+            <soap:operation soapAction="http://api.jasperwireless.com/ws/service/globalsimtransfer/GetGlobalSimTransferStatus"/>
+            <input name="GetGlobalSimTransferStatusRequest">
+                <soap:body use="literal" namespace="http://api.jasperwireless.com/ws/schema"/>
+            </input>
+            <output name="GetGlobalSimTransferStatusResponse">
+                <soap:body use="literal" namespace="http://api.jasperwireless.com/ws/schema"/>
+            </output>
+        </operation>
+        <operation name="CancelGlobalSimTransfer">
+            <soap:operation soapAction="http://api.jasperwireless.com/ws/service/globalsimtransfer/CancelGlobalSimTransfer"/>
+            <input name="CancelGlobalSimTransferRequest">
+                <soap:body use="literal" namespace="http://api.jasperwireless.com/ws/schema"/>
+            </input>
+            <output name="CancelGlobalSimTransferResponse">
+                <soap:body use="literal" namespace="http://api.jasperwireless.com/ws/schema"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="GlobalSimTransferService">
+        <port binding="jws:GlobalSimTransferBinding" name="SimMigrationPort">
+            <soap:address location="https://api.10646.cn/ws/service/globalsimtransfer"/>
+        </port>
+    </service>
+</definitions>
